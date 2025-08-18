@@ -1,0 +1,61 @@
+
+#header{
+position:sticky;
+
+}
+
+
+
+
+#navigation-bar{
+
+    width: 350px;
+    margin: 0 auto;
+
+}
+#navbar-ul{
+    
+    display: flex;
+    gap: 20px;
+
+}
+
+#heading{
+   border: 2px solid black;
+   text-align: center;
+   padding: 10px;
+   border-radius: 10px;
+    position: sticky; 
+  
+}
+
+#main-paragraph{
+    border: 2px solid black;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+
+#project-one{
+    border: 2px solid black;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+#project-two{
+    border: 2px solid black;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+#skills-list{
+
+  border: 2px solid black;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+
+}
