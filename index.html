@@ -7,111 +7,78 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Christopher Martinez — Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Christopher Martinez — Projects</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <header class="site-header">
+    <h1>Projects — Christopher Martinez</h1>
+  </header>
 
-  <div id="header">
-    <p>Christopher Martinez — Software Engineer & DevOps Enthusiast</p>
+  <div class="page">
+    <!-- Sticky vertical "About" card (sidebar) -->
+    <aside class="about-card" id="aboutCard" role="button" aria-label="Open About page" tabindex="0">
+      <img class="about-avatar" src="assets/headshot.jpg" alt="Photo" />
+      <div class="about-rail">
+        <!-- sideways label -->
+        <span class="about-vertical-text">About Me</span>
+      </div>
+      <div class="about-hover-hint" aria-hidden="true">hover • click</div>
+    </aside>
+
+
+
+    <div class="main-project">
+
+
+        <section>
+
+            <h3>Main Project:</h3>
+
+            <p>todays project is the Minecraft mod</p>
+
+
+        </section>
+    </div>
+    <!-- Main content: projects list
+    <main class="projects">
+      <article class="project">
+        <h2>Central Command Center</h2>
+        <p>Built a multi-node Linux cluster from consumer hardware, migrated to Debian, Wi-Fi gateway, Ethernet mesh, and hosted a modded Minecraft server with JVM tuning.</p>
+      </article>
+      <article class="project">
+        <h2>Mobile Modified Gaming</h2>
+        <p>Transferred and configured modded game files onto a Steam Deck; handled driver/compatibilty and Wi-Fi file transfer via CLI.</p>
+      </article> -->
+
+      <!-- filler to let you scroll and see the sticky behavior -->
+      
+    </main>
   </div>
 
-<!-- 
-  <nav id="navigation-bar">
-    <ul id="navbar-ul">
-      <li>Home</li>
-      <li>About</li>
-      <li>Projects</li>
-      <li>Contact</li>
-    </ul>
-  </nav> -->
-
-  <h1 id="heading">Christopher Martinez </h1>
-  <h2 id="heading">Building reliable systems, writing clean code, and solving hard problems.</h2>
-
-  <!-- <div class="search-box">
-    <input class="search-text" type="text" placeholder="Search my site...">
-    <a class="search-button" href="#"></a>
-  </div> -->
-
-  <p id="main-paragraph">
-    I am a Computing & Informatics student at Rowan University with a concentration in DevOps and Cybersecurity.  
-    My focus is on creating reliable systems, writing maintainable code, and learning through real-world projects.  
-    I have experience with multiple programming languages, Linux systems administration, and client-facing problem solving.  
-  </p>
-
-  <p id="project-one">
-    <strong>Project: Central Command Center</strong><br>
-    I built a multi-node Linux cluster from consumer hardware, migrating each machine from Windows to Debian-based Linux.  
-    I configured one machine as a Wi-Fi gateway, connected the rest via Ethernet, and hosted a modded Minecraft server.  
-    With limited resources (~11 GB RAM), I optimized JVM settings and tuned the server for performance.  
-    This taught me practical networking, Linux administration, and system optimization under constraints.  
-  </p>
-
-  <p id="project-two">
-    <strong>Project: Mobile Modified Gaming</strong><br>
-    For a client, I successfully transferred and configured modded game files onto a Steam Deck.  
-    I troubleshot USB cable limitations, explored Linux desktop mode, and used Wi-Fi file transfers with command line tools.  
-    I also installed compatibility software to ensure smooth execution of the game in the SteamOS environment.  
-    This project strengthened my ability to adapt, experiment, and deliver solutions on unusual hardware.  
-  </p>
-
-  <div id="skills-list">
-    <h3>Programming Languages</h3>
-    <ul>
-      <li>JavaScript</li>
-      <li>Python</li>
-      <li>C++</li>
-      <li>Java</li>
-      <li>HTML &amp; CSS</li>
-      <li>PHP</li>
-      <li>Swift</li>
-    </ul>
-
-    <h3>Technical Skills</h3>
-    <ul>
-      <li>Linux Systems Administration</li>
-      <li>Networking & Firewalls</li>
-      <li>DevOps Tools: Git, CI/CD, Docker</li>
-      <li>Server Hosting & Backups</li>
-      <li>Debugging & Troubleshooting</li>
-    </ul>
-
-    <h3>Spoken Languages</h3>
-    <ul>
-      <li>English — Proficient</li>
-      <li>Spanish — semi-conversational</li>
-      <li>Russian — basics</li>
-      <li>German — basics</li>
-      <li>Korean — basics</li>
-      <li>Portuguese — basics</li>
-    </ul>
-  </div>
-
-  <!-- <p>
-    <strong>Background:</strong>  
-    I value hard work, persistence, and learning by doing.  
-    Whether configuring servers, building mods, or writing code, I focus on solving problems with integrity and creativity.  
-  </p> -->
-
+  <script src="script.js" defer></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
