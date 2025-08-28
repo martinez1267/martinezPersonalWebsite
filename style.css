@@ -1,188 +1,287 @@
 
 
-/* -------- Base & Reset -------- */
-*,
-*::before,
-*::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+:root{
+  --bg: #0b1220;
+  --panel: #0e1726;
+  --text: #e6edf6;
+  --muted: #94a3b8;
+  --accent: #7dd3fc;
+  --card: #0f172a;
+  --border: #1f2940;
+}
+
+
+
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+
+
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-  line-height: 1.6;
-  color: #0f172a;            /* slate-900 */
-  background: #f8fafc;       /* slate-50 */
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+  background: linear-gradient(180deg, #0a0f1d 0%, #0b1220 60%, #0b1324 100%);
+  color: var(--text);
 }
 
-/* sensible defaults for type */
-h1, h2, h3 { margin: 0.5rem 0 0.25rem; line-height: 1.25; }
-p, ul { margin: 0.5rem 0 0.75rem; }
-ul { padding-left: 1.25rem; }
 
-/* focus styles for accessibility */
-a, button, input {
-  outline-offset: 2px;
-}
-a:focus-visible,
-button:focus-visible,
-input:focus-visible {
-  outline: 2px solid #2563eb; /* blue-600 */
-}
 
-/* -------- Layout helpers (target existing IDs so no HTML change) -------- */
-#navigation-bar,
-#navbar-ul,
-#heading,
-#main-paragraph,
-#project-one,
-#project-two,
-#skills-list,
-.search-box {
-  max-width: 900px;          /* keeps lines readable */
-  margin-left: auto;
-  margin-right: auto;
-}
 
-/* give vertical rhythm */
-#heading,
-#main-paragraph,
-#project-one,
-#project-two,
-#skills-list,
-.search-box,
-#navigation-bar {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
 
-/* -------- Header (make THIS sticky, not random headings) -------- */
-#header {
+
+/* Header */
+.site-header {
   position: sticky;
   top: 0;
-  z-index: 1000;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: saturate(160%) blur(8px);
-  border-bottom: 1px solid #e5e7eb; /* gray-200 */
-  padding: 0.75rem 1rem;
+  z-index: 50;
+  background: rgba(10,15,29,0.8);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 16px;
 }
 
-/* Optional: style any text inside header */
-#header p {
-  margin: 0;
-  font-weight: 600;
-  text-align: center;
+
+
+.site-header h1 { margin: 0; font-size: 18px; font-weight: 600; }
+.back-link { color: var(--muted); text-decoration: none; margin-right: 12px; }
+
+
+
+/* Layout */
+.page {
+  display: grid;
+  grid-template-columns: 82px 1fr; /* narrow left rail for the vertical card */
+  gap: 20px;
+  padding: 16px;
 }
 
-/* -------- Navigation -------- */
-#navigation-bar {
-  width: 100%;              /* remove fixed 350px width */
-  padding: 0 1rem;
+
+
+
+
+
+
+/* Sticky vertical About card */
+.about-card {
+  position: sticky;
+  top: 14vh;                 /* sticks below header */
+  align-self: start;
+  width: 72px;               /* narrow vertical bar */
+  min-height: 60vh;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  place-items: center;
+  cursor: pointer;
+  user-select: none;
+  transform: translateY(0) translateZ(0);
+  transition: box-shadow 180ms ease, transform 180ms ease, border-color 180ms ease;
+  will-change: transform;
+  outline: none;
 }
 
-#navbar-ul {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;                /* larger, touch-friendly spacing */
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0.75rem 0;
-  border: 1px solid #e5e7eb;
-  background: #ffffff;
+
+
+
+
+
+.about-card:focus { box-shadow: 0 0 0 2px var(--accent); }
+.about-card:hover {
+
+
+  /* small "jump up" */
+  transform: translateY(-6px);
+  border-color: #28406a;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+}
+
+
+
+
+
+/* slight 3D lift on mouse move (JS updates CSS vars) */
+.about-card {
+  --liftX: 0px;
+  --liftY: 0px;
+}
+.about-card.is-hovering {
+  transform: translateY(-6px) translateX(var(--liftX)) translateY(var(--liftY));
+}
+
+
+
+
+
+
+/* top avatar in the rail */
+.about-avatar {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
   border-radius: 12px;
+  margin-top: 10px;
+  border: 1px solid var(--border);
 }
 
-/* If you later wrap these in links, they’ll look good */
-#navbar-ul li {
-  padding: 0.4rem 0.7rem;
-  border-radius: 8px;
+
+
+
+
+/* vertical "About Me" label */
+.about-rail {
+  writing-mode: vertical-rl;       /* vertical text flow */
+  text-orientation: mixed;
+  display: grid; place-items: center;
+  padding: 8px 0;
+  color: var(--muted);
+}
+.about-vertical-text {
+  letter-spacing: 0.06em;
+  font-size: 14px;
 }
 
-/* -------- “Card” look for repeated sections -------- */
-:root {
-  --card-bg: #ffffff;
-  --card-bd: #e5e7eb;
-  --card-rd: 12px;
-  --shadow: 0 10px 20px rgba(0,0,0,0.04);
+
+
+
+
+/* small hint at bottom */
+.about-hover-hint {
+  font-size: 11px;
+  color: var(--muted);
+  opacity: 0.7;
+  margin-bottom: 10px;
 }
 
-/* group all the repeated box styles */
-#heading,
-#main-paragraph,
-#project-one,
-#project-two,
-#skills-list {
-  background: var(--card-bg);
-  border: 1px solid var(--card-bd);
-  border-radius: var(--card-rd);
-  box-shadow: var(--shadow);
-  padding: 1rem;
+
+
+
+
+
+/* click "pop-out" effect before navigation */
+.about-card.pop {
+  animation: popout 220ms ease forwards;
+}
+@keyframes popout {
+  0%   { transform: translateY(-6px) scale(1); }
+  100% { transform: translateY(-10px) scale(1.06); box-shadow: 0 16px 36px rgba(0,0,0,.45); }
 }
 
-/* Titles look nicer centered; paragraphs left for readability */
-#heading {
-  text-align: center;
-  font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
-  font-weight: 700;
+
+
+
+
+
+
+/* Projects area */
+.projects {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.project {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+  margin: 18px 0;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+.project h2 { margin: 0 0 6px; }
+
+
+
+
+
+
+/* ABOUT PAGE (expanded) */
+.about-body {
+  background: radial-gradient(900px 600px at 20% 0%, #0f1a30, #0b1220 60%, #0b1324 100%);
 }
 
-/* long paragraphs are easier to read left-aligned */
-#main-paragraph,
-#project-one,
-#project-two {
-  text-align: left;
+
+
+.about-expanded {
+  max-width: 960px;
+  margin: 24px auto;
+  padding: 0 16px 32px;
 }
 
-/* lists centered title, but list items left aligned */
-#skills-list h3 {
-  text-align: center;
-  margin-top: 0.25rem;
-}
-#skills-list ul {
-  margin-top: 0.5rem;
-}
 
-/* -------- Search box (you already have the markup) -------- */
-.search-box {
-  display: flex;
+
+
+.about-hero {
+
+  display: grid;
+
+  grid-template-columns: 120px 1fr;
+
   align-items: center;
-  gap: 0.5rem;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 999px;
-  padding: 0.4rem 0.6rem;
+
+  gap: 16px;
+
+  background: var(--panel);
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  padding: 16px;
+
+  margin-bottom: 20px;
+
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
 }
 
-.search-text {
-  flex: 1 1 auto;
-  border: none;
-  background: transparent;
-  padding: 0.35rem 0.5rem;
-  font-size: 1rem;
-}
-.search-text:focus { outline: none; }
 
-.search-button {
-  display: inline-block;
-  text-decoration: none;
-  padding: 0.35rem 0.75rem;
-  border-radius: 999px;
-  border: 1px solid #e5e7eb;
-  background: #f8fafc;
+
+
+
+
+.about-hero-avatar {
+
+  width: 120px; 
+
+  height: 120px; 
+
+  object-fit: cover; 
+
+  border-radius: 16px; 
+  
+  border: 1px solid var(--border);
+}
+.about-hero-title { margin: 0; font-size: 24px; }
+
+.about-content {
+
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  padding: 18px;
+
+  line-height: 1.6;
+
 }
 
-/* -------- Responsive tweaks -------- */
-@media (max-width: 640px) {
-  #navbar-ul { gap: 0.5rem; }
-  #heading,
-  #main-paragraph,
-  #project-one,
-  #project-two,
-  #skills-list,
-  .search-box { margin-left: 0.75rem; margin-right: 0.75rem; }
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  .about-card,
+  .about-card.pop { transition: none; animation: none; }
 }
+
+
+
+
+
+
+
+
 
 /* NOTE!!!!!!!! THIIS SECTION WAS MADE BY CHAT GPT ^^^^^^^^^^^^^^^^^*/
 
